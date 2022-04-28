@@ -66,7 +66,7 @@ public class Ej01ProgramacionWeb {
         }
         
         double total = importe - calculo;
-        double importeXCuota = calculo/cantCuotas;
+        double importeXCuota = total/cantCuotas;
         
         System.out.println("Importe a abonar con descuento: " + String.format("%.2f", total));
         System.out.println("Descuento: " +  String.format("%.2f", calculo));
