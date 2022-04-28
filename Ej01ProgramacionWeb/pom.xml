@@ -10,4 +10,5 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.ej01programacionweb.Ej01ProgramacionWeb</exec.mainClass>
     </properties>
+    <name>Ej01ProgWeb_Tarjetas</name>
 </project>
