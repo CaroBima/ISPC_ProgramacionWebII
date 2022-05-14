@@ -38,22 +38,47 @@ public class Tarjetavdos {
         public static void main(String[] args) {
           //llamo al metodo que permite ingresar el tipo de tarjeta:
           int opcion = 0;
-          double importeTotal = 0;
+          double importe = 0;
           
           //solicito el ingreso del importe total a abonar:
-          
+          System.out.println("*********************************************");
+          System.out.print  ("       Ingrese el importe: ");
+          Scanner ingImporte = new Scanner(System.in);
+          importe = ingImporte.nextDouble();
           
           //llamo al metodo que solicita el ingreso de el tipo de tarjeta, devuelve el numero de opcion solamente
           opcion = ingresoTipoTarj();
           
           //solicito el ingreso de la cantidad de cuotas:
-          System.out.print("Ingrese la cantidad de cuotas:");
+          System.out.println("*********************************************");
+          System.out.print  ("       Ingrese la cantidad de cuotas: ");
           Scanner ingCantCuotas = new Scanner(System.in);
           int cantCuotas = ingCantCuotas.nextInt();
+          double importeTotal = calcularMontoTotal(importe, opcion);
+          double importeCuota = calcularMontoCuota(importeTotal, cantCuotas);
           
-            
+            System.out.println("*********************************************");
+            System.out.println("   Importe total: $" + importeTotal );
+            System.out.println("   Importe de cada cuota: $" + importeCuota);
+            System.out.println("*********************************************");
         }
         
+        
+         public static double calcularMontoCuota(double monto, int cantCuotas){
+            return monto/cantCuotas;
+        }
+  
+        public static double calcularMontoTotal(double monto, int tipoTarjeta){
+            if(tipoTarjeta == 1){
+                return monto + (monto * 0.05);
+            }else if (tipoTarjeta == 2){
+                return monto + (monto * 0.10);
+            }else{
+                return monto + (monto * 0.15);
+            }
+        }
+         
+         
         //permite el ingreso del tipo de tarjeta y devuelve el numero de opcion
         public static int ingresoTipoTarj(){
            int opcionTarjeta = 0;
@@ -73,12 +98,12 @@ public class Tarjetavdos {
                 System.out.print  ("   Ingrese número de opción (del 1 al 3): ");
                 Scanner ingresoTipo = new Scanner(System.in);
                 opcionTarjeta = ingresoTipo.nextInt();
-            } while( opcionTarjeta<1 || opcionTarjeta >3);
+            } while(opcionTarjeta<1 || opcionTarjeta >3);
             
            return opcionTarjeta;
             
         }       
        
-       // public static calcularMontoCuota(){
-        //}
+       
 }
+      
