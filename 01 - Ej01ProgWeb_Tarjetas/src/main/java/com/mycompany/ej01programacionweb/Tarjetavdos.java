@@ -48,19 +48,22 @@ public class Tarjetavdos {
           
           //llamo al metodo que solicita el ingreso de el tipo de tarjeta, devuelve el numero de opcion solamente
           opcion = ingresoTipoTarj();
-          
-          //solicito el ingreso de la cantidad de cuotas:
-          System.out.println("*********************************************");
-          System.out.print  ("       Ingrese la cantidad de cuotas: ");
-          Scanner ingCantCuotas = new Scanner(System.in);
-          int cantCuotas = ingCantCuotas.nextInt();
-          double importeTotal = calcularMontoTotal(importe, opcion);
-          double importeCuota = calcularMontoCuota(importeTotal, cantCuotas);
-          
-            System.out.println("*********************************************");
-            System.out.println("   Importe total: $" + importeTotal );
-            System.out.println("   Importe de cada cuota: $" + importeCuota);
-            System.out.println("*********************************************");
+          if(opcion != 0){ //valido que se haya ingresado un numero de tarjeta correcto, si es cero quiere decir que se ingreso un valor distinto a 1, 2 o 3
+                //solicito el ingreso de la cantidad de cuotas:
+                System.out.println("*********************************************");
+                System.out.print  ("       Ingrese la cantidad de cuotas: ");
+                Scanner ingCantCuotas = new Scanner(System.in);
+                int cantCuotas = ingCantCuotas.nextInt();
+                
+                //calculo los importes para mostrarlos
+                double importeTotal = calcularMontoTotal(importe, opcion);
+                double importeCuota = calcularMontoCuota(importeTotal, cantCuotas);
+
+                  System.out.println("*********************************************");
+                  System.out.println("   Importe total: $" + importeTotal );
+                  System.out.println("   Importe de cada cuota: $" + importeCuota);
+                  System.out.println("*********************************************");
+          }
         }
         
         
@@ -83,7 +86,7 @@ public class Tarjetavdos {
         public static int ingresoTipoTarj(){
            int opcionTarjeta = 0;
            //do while para validar que el número ingresado sea correcto, que corresponda a una tarjeta 
-           do {
+           //do {
                 //se solicita el ingreso del valor y se modifica el valor de opcion
                 System.out.println("*********************************************");
                 System.out.println("*    Cálculo de importe total y cuotas      *");
@@ -98,8 +101,12 @@ public class Tarjetavdos {
                 System.out.print  ("   Ingrese número de opción (del 1 al 3): ");
                 Scanner ingresoTipo = new Scanner(System.in);
                 opcionTarjeta = ingresoTipo.nextInt();
-            } while(opcionTarjeta<1 || opcionTarjeta >3);
-            
+            //} while(opcionTarjeta<1 || opcionTarjeta >3);
+            //utilizando if en vez de do while o while para validar que el numero este entre 1 y 3:
+            if(opcionTarjeta<1 || opcionTarjeta >3){
+                System.out.println("Opción inválida, se debe ingresar un número del 1 al 3.");
+                return 0; //devuelvo 0 "informando" que se ingreso un valor inválido para que no continuar la ejecucion de las demas opciones
+            }
            return opcionTarjeta;
             
         }       
