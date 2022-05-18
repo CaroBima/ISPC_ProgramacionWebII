@@ -14,10 +14,6 @@ package com.mycompany.ej01tarjetapoo;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Caro
- */
 public class Ej01TarjetaPoo {
 
     public static void main(String[] args) {
@@ -47,7 +43,8 @@ public class Ej01TarjetaPoo {
         int opcionTarjeta = ingresoTipo.nextInt();
         tc.setTipoTarjeta(opcionTarjeta); //guardo el tipo de tarjeta en la instancia utilizando el setter
 
-        if(tc.getTipoTarjeta() != 0){ //valido que se haya ingresado un numero de tarjeta correcto, si es cero quiere decir que se ingreso un valor distinto a 1, 2 o 3
+        if(tc.getTipoTarjeta() != 0){ //valido que se haya ingresado un numero de tarjeta correcto, 
+                                      //si es cero quiere decir que se ingreso un valor distinto a 1, 2 o 3
             //solicito el ingreso de la cantidad de cuotas:
             System.out.println("*********************************************");
             System.out.print  ("       Ingrese la cantidad de cuotas: ");
@@ -66,5 +63,5 @@ public class Ej01TarjetaPoo {
             System.out.println("La opción elegida es incorrecta, debe seleccionarse un número entre 1 y 3");
         }
     }
-        
+       
 }
